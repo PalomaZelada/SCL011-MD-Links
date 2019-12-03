@@ -59,13 +59,13 @@
 //         return linkStatus(link);
 //       });
 //       return Promise.all(statusPromises);
-    })
+    // })
     // .then(
     //   (statuses)=>{
     //     console.log(statuses)
     //   }
     // )
-}
+// }
 
 // extractLinks(path2);
 
