@@ -2,7 +2,7 @@
   "name": "md-links",
   "version": "0.1.0",
   "description": "* [1. Preámbulo](#1-preámbulo)\r * [2. Resumen del proyecto](#2-resumen-del-proyecto)\r * [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)\r * [4. Consideraciones generales](#4-consideraciones-generales)\r * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)\r * [6. Entregables](#6-entregables)\r * [7. Hacker edition](#7-hacker-edition)\r * [8. Evaluación](#8-evaluación)\r * [9. Pistas, tips y lecturas complementarias](#9-pistas-tips-y-lecturas-complementarias)\r * [10. Checklist](#10-checklist)",
-  "main": "index.js",
+  "main": "mdlinks.js",
   "directories": {
     "test": "test"
   },

@@ -1,17 +1,17 @@
-const fs = require('fs');
-const path = require('path');
-//const FileHound = require('filehound');
-const marked = require('marked');
-const fetch = require('fetch');
-const fetchUrl = fetch.fetchUrl;
+// const fs = require('fs');
+// const path = require('path');
+// //const FileHound = require('filehound');
+// const marked = require('marked');
+// const fetch = require('fetch');
+// const fetchUrl = fetch.fetchUrl;
 
 // Rescatando ruta
-let path2 = process.argv[2];
+// let path2 = process.argv[2];
 // Convirtiendo en ruta absoluta
-path2 = path.normalize(path2);
-path2 = path.resolve(path2);
+// path2 = path.normalize(path2);
+// path2 = path.resolve(path2);
 // Para escribir los links
-const links = [];
+// const links = [];
 
 // Para leer archivo md
 // const readMdFile = (path => {
@@ -27,38 +27,38 @@ const links = [];
 // })
 
 // Para extraer linkks
-function extractLinks(path) {
-  const promise = new Promise((resolve, reject) => {
-    fs.readFile(path, 'UTF-8', (error, data) => {
-      if (error) {
-        reject(new Error('No hay links'));
-      }
-      const renderer = new marked.Renderer();
-      renderer.link = function (href, file, text) {
-        links.push({
-          href: href,
-          text: text,
-          file: path2,
-        });
-      };
-      marked(data, { renderer: renderer });
-      resolve(links);
-    });
-  });
-  return promise.then(
-    (links) => {
-      console.log(links);
-      let getLinks = links.map(function (links) {
-        return links.href;
-      });
-      return getLinks;
-    }
-  ).then(
-    (newLinks) => {
-      const statusPromises = newLinks.map(link => {
-        return linkStatus(link);
-      });
-      return Promise.all(statusPromises);
+// function extractLinks(path) {
+//   const promise = new Promise((resolve, reject) => {
+//     fs.readFile(path, 'UTF-8', (error, data) => {
+//       if (error) {
+//         reject(new Error('No hay links'));
+//       }
+//       const renderer = new marked.Renderer();
+//       renderer.link = function (href, file, text) {
+//         links.push({
+//           href: href,
+//           text: text,
+//           file: path2,
+//         });
+//       };
+//       marked(data, { renderer: renderer });
+//       resolve(links);
+//     });
+//   });
+//   return promise.then(
+//     (links) => {
+//       console.log(links);
+//       let getLinks = links.map(function (links) {
+//         return links.href;
+//       });
+//       return getLinks;
+//     }
+//   ).then(
+//     (newLinks) => {
+//       const statusPromises = newLinks.map(link => {
+//         return linkStatus(link);
+//       });
+//       return Promise.all(statusPromises);
     })
     // .then(
     //   (statuses)=>{
@@ -67,21 +67,21 @@ function extractLinks(path) {
     // )
 }
 
-extractLinks(path2);
+// extractLinks(path2);
 
-const linkStatus = (url) => {
-  return new Promise((resolve) => {
-    fetchUrl(url, (error, meta, body) => {
-      if (meta) {
-        if (meta.status < 399) {
-          resolve(meta.status.toString())
-        } else (meta.status > 400); {
-          resolve(meta.status.toString());
-        }
-      }
-    })
-  })
-}
+// const linkStatus = (url) => {
+//   return new Promise((resolve) => {
+//     fetchUrl(url, (error, meta, body) => {
+//       if (meta) {
+//         if (meta.status < 399) {
+//           resolve(meta.status.toString())
+//         } else (meta.status > 400); {
+//           resolve(meta.status.toString());
+//         }
+//       }
+//     })
+//   })
+// }
 
 // console.log(links)
 
